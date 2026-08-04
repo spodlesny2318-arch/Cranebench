@@ -21,7 +21,7 @@ Crane control results are rarely comparable: each paper defines its own plant, m
 | Nr | Code metadata description | Metadata |
 |----|---------------------------|----------|
 | C1 | Current code version | v1.0.0 |
-| C2 | Permanent link to code/repository used for this code version | *(mandatory GitHub URL — to be inserted)* |
+| C2 | Permanent link to code/repository used for this code version | https://github.com/spodlesny2318-arch/Cranebench |
 | C3 | Legal code license | BSD-3-Clause |
 | C4 | Code versioning system used | git |
 | C5 | Software code languages, tools and services used | Python (≥ 3.10), NumPy, SciPy; SymPy for the model derivations; Matplotlib for the figures |

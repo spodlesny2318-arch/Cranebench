@@ -279,7 +279,7 @@ This research did not receive any specific grant from funding agencies in the pu
 
 ## Data availability
 
-The source code, the four campaign result files, the provenance ledgers and the scripts that regenerate every table and figure in this article are openly available in the repository given in the code metadata table, archived together with the source under the DOI of reference [34]. No other data were used.
+The source code, the four campaign result files, the provenance ledgers and the scripts that regenerate every table and figure in this article are openly available in the repository given in the code metadata table, archived together with the source under the DOI of reference [34]; that DOI resolves to the exact release on which every number in this article was computed. No other data were used.
 
 ## Declaration of generative AI and AI-assisted technologies in the manuscript preparation process
 
@@ -353,4 +353,4 @@ During the preparation of this work the authors used a large language model assi
 
 [33] American Society of Civil Engineers, ASCE/SEI 7-22, Minimum Design Loads and Associated Criteria for Buildings and Other Structures, ASCE, Reston VA, 2022; torsional wind load case (Case 2), which pairs 75 % of the design wind load with an eccentricity of 15 % of the width.
 
-[34] O. Sheremet, S. Podliesnyi, cranebench: a reproducible benchmark for underactuated crane control, version 1.0.0 [software], archived at Zenodo, 2026. doi:*(to be inserted on release)*.
+[34] O. Sheremet, S. Podliesnyi, cranebench: a reproducible benchmark for underactuated crane control, version 1.0.0 [software], Zenodo, 2026. doi:10.5281/zenodo.21785505.

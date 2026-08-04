@@ -1,6 +1,7 @@
 # cranebench
 
-[Repository](https://github.com/spodlesny2318-arch/Cranebench)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21785504.svg)](https://doi.org/10.5281/zenodo.21785504)
+
 
 A reproducible benchmark for the control of underactuated crane systems.
 

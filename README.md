@@ -1,0 +1,131 @@
+# cranebench
+
+A reproducible benchmark for the control of underactuated crane systems.
+
+Crane control papers are almost never comparable with one another. Each one
+defines its own plant, its own manoeuvre, its own wind, its own uncertainty
+range and its own metrics, and then reports that the proposed controller beats
+the baselines the authors implemented themselves. `cranebench` fixes the bench
+so that the controller becomes the only thing that varies.
+
+The package contains **no novel controller**. That is deliberate. Its content
+is the plants, the disturbance models, the paired uncertainty design, the frozen
+metric module, the provenance ledger and five classical baselines.
+
+## Install
+
+```bash
+pip install -e .
+pytest -q            # 25 tests, ~1.5 min
+```
+
+Authors verifying the accompanying article should follow
+[`VERIFY.md`](VERIFY.md), which regenerates every campaign and checks the
+manuscript tables against the data mechanically.
+
+Requires Python >= 3.10, numpy, scipy.
+
+## Thirty-second example
+
+```python
+from cranebench.reference import Manoeuvre
+from cranebench.runner import Campaign, run_single
+from cranebench.controllers import LQR
+
+camp = Campaign(plant="planar", wind="kaimal",
+                manoeuvre=Manoeuvre(distance=20.0, t_ramp=20.0, t_total=40.0)).build()
+metrics, (t, X, U) = run_single(LQR(), camp, factors=None, wind_seed=7)
+print(metrics["peak_swing"], metrics["residual_swing"])
+```
+
+## Evaluating your own controller
+
+Subclass `Controller`, implement `__call__(t, x) -> u`, and hand it to the
+runner. Nothing else changes: same plants, same seeds, same metrics.
+
+```python
+from cranebench.controllers import Controller
+from cranebench.runner import Campaign, run_campaign
+from cranebench.uncertainty import lhs_design
+from cranebench.controllers import BASELINES
+
+class MyController(Controller):
+    name = "mine"
+    def __call__(self, t, x):
+        ...
+
+camp = Campaign(controllers={**{k: v() for k, v in BASELINES.items()},
+                             "mine": MyController()})
+res = run_campaign(camp, lhs_design(n=500, seed=20260729))
+```
+
+Because the design is paired, `res["mine"]["residual_swing"] -
+res["PD"]["residual_swing"]` is a sample-by-sample contrast, not a difference of
+two independent clouds.
+
+## What is in the box
+
+| Component | Contents |
+|---|---|
+| Plants | planar crane with hoisting; 3-D crane with a yawing payload; cooperative dual crane with a rigid beam on visco-elastic falls |
+| Disturbances | Kaimal spectral synthesis (exact realised variance); Dryden shaping filter (exact ZOH statistics, unbounded support) |
+| Baselines | PD, LQR, ZVD input shaper, boundary-layer SMC, hierarchical SMC |
+| Design | centred Latin hypercube over five multiplicative factors, paired across controllers |
+| Metrics | ISE, settling time, peak/RMS/residual swing, peak/RMS yaw, effort, peak input, command chatter, bound satisfaction |
+| Statistics | paired bootstrap CI, Wilcoxon signed-rank, running-mean convergence |
+| Provenance | ledger with source hashes, metric hash, every seed, solver and environment |
+| Execution | scalar reference path (all plants) and a batched path for the planar plant that integrates the whole ensemble at once, 70x faster and verified equal to 1.4e-14 |
+
+## Design decisions that are not obvious
+
+Documented in full in [`docs/DESIGN.md`](docs/DESIGN.md). The short list:
+
+* **The wind record lives on its own grid.** If the disturbance realisation is
+  indexed by the integrator step, refining the step changes the disturbance and
+  a step-convergence study can never converge. Ours is synthesised at 100 Hz and
+  interpolated.
+* **Effort excludes the hoist channel.** The hoist carries the static weight, so
+  including it makes every controller's effort equal to `(mg)^2 T` to three
+  digits and destroys the comparison.
+* **The switching function is `tanh`, not `sign`.** With `sign`, the measured
+  effort of a sliding controller is a function of the integrator step.
+* **The metric module is hashed.** Change a metric and old results stop
+  comparing equal, by design.
+* **Kinematic Jacobians use the complex step.** The Coriolis term differentiates
+  the mass matrix, so a finite-difference Jacobian would be differentiated twice
+  and its noise floor would surface in the accelerations at 1e-4.
+* **The batched path is pinned to the scalar one.** A second implementation of
+  the same experiment is a liability unless a test requires the two to agree;
+  `tests/test_batch.py` does, on every metric over a full paired design.
+
+## Verification
+
+The package does not assert its models, it checks them:
+
+* the hand-derived planar equations agree with an independently assembled
+  Lagrangian model to 6e-10 over random states;
+* all three plants conserve energy to better than 1e-10 relative over 3 s with
+  damping removed;
+* the Kaimal record reproduces the target spectrum with log-PSD correlation
+  above 0.95, and its realised variance is exact;
+* the Dryden filter is stationary from its first sample;
+* every reported metric is converged to better than 0.03 % in the integrator
+  step;
+* the batched execution path reproduces the scalar reference path to 1.4e-14 on
+  every metric.
+
+## Reproducing the paper
+
+```bash
+for c in calm reference dryden stress; do
+    python examples/run_batch_campaign.py $c 500
+done
+python examples/summarise_batch.py          # tables
+python examples/make_figures.py             # figures
+```
+
+Four campaigns, 10 000 closed-loop runs, about three minutes on one core.
+
+## Licence
+
+BSD-3-Clause. If you use it, cite the SoftwareX paper (see `CITATION.cff`).

@@ -1,0 +1,81 @@
+{
+  "PD": {
+    "param_a": "kp",
+    "a": 4000.0,
+    "param_b": "kd",
+    "b": 6000.0,
+    "score": 12.638329916244249,
+    "feasible": true,
+    "evaluations": 48,
+    "objective": "minimise mean(peak_swing + 4 * residual_swing) [deg] over an 8-sample held-out uncertainty design, subject to the load arriving: mean |position error| over the last 5 s below 0.25 m, and every sample finite",
+    "optimum_on_grid_boundary": false,
+    "tune_samples": 8,
+    "tune_seed": 90210,
+    "peak_swing": 8.561140314038276,
+    "residual_swing": 1.0192974005514936
+  },
+  "LQR": {
+    "param_a": "q_swing",
+    "a": 25600.0,
+    "param_b": "r",
+    "b": 2e-09,
+    "score": 12.357679381783532,
+    "feasible": true,
+    "evaluations": 64,
+    "objective": "minimise mean(peak_swing + 4 * residual_swing) [deg] over an 8-sample held-out uncertainty design, subject to the load arriving: mean |position error| over the last 5 s below 0.25 m, and every sample finite",
+    "optimum_on_grid_boundary": false,
+    "tune_samples": 8,
+    "tune_seed": 90210,
+    "peak_swing": 8.887350670286793,
+    "residual_swing": 0.8675821778741845
+  },
+  "ZVD": {
+    "param_a": "kp",
+    "a": 4000.0,
+    "param_b": "kd",
+    "b": 12000.0,
+    "score": 7.78325957120295,
+    "feasible": true,
+    "evaluations": 48,
+    "objective": "minimise mean(peak_swing + 4 * residual_swing) [deg] over an 8-sample held-out uncertainty design, subject to the load arriving: mean |position error| over the last 5 s below 0.25 m, and every sample finite",
+    "optimum_on_grid_boundary": false,
+    "tune_samples": 8,
+    "tune_seed": 90210,
+    "peak_swing": 4.094015613262727,
+    "residual_swing": 0.9223109894850559
+  },
+  "SMC": {
+    "param_a": "c",
+    "a": 0.2,
+    "param_b": "k",
+    "b": 250.0,
+    "score": 22.69906112083859,
+    "feasible": true,
+    "evaluations": 80,
+    "objective": "minimise mean(peak_swing + 4 * residual_swing) [deg] over an 8-sample held-out uncertainty design, subject to the load arriving: mean |position error| over the last 5 s below 0.25 m, and every sample finite",
+    "optimum_on_grid_boundary": true,
+    "tune_samples": 8,
+    "tune_seed": 90210,
+    "peak_swing": 11.524772339410514,
+    "residual_swing": 2.7935721953570187
+  },
+  "HSMC": {
+    "param_a": "lam",
+    "a": 3.0,
+    "param_b": "c_swing",
+    "b": 0.1,
+    "score": 21.71706200693668,
+    "feasible": true,
+    "evaluations": 80,
+    "objective": "minimise mean(peak_swing + 4 * residual_swing) [deg] over an 8-sample held-out uncertainty design, subject to the load arriving: mean |position error| over the last 5 s below 0.25 m, and every sample finite",
+    "optimum_on_grid_boundary": true,
+    "tune_samples": 8,
+    "tune_seed": 90210,
+    "peak_swing": 14.144729755210953,
+    "residual_swing": 1.893083062931431,
+    "inherited": {
+      "c": 0.2,
+      "k": 250.0
+    }
+  }
+}

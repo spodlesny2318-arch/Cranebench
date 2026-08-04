@@ -1,0 +1,71 @@
+{
+  "PD": {
+    "param_a": "kp",
+    "a": 2000.0,
+    "param_b": "kd",
+    "b": 6000.0,
+    "score": 8.83610143172731,
+    "feasible": true,
+    "evaluations": 48,
+    "objective": "minimise peak_swing + 4 * residual_swing [deg] subject to settle_time < horizon",
+    "optimum_on_grid_boundary": false,
+    "peak_swing": 8.597393731422255,
+    "residual_swing": 0.05967692507626348
+  },
+  "LQR": {
+    "param_a": "q_swing",
+    "a": 100000.0,
+    "param_b": "r",
+    "b": 2e-09,
+    "score": 7.503892767411828,
+    "feasible": true,
+    "evaluations": 48,
+    "objective": "minimise peak_swing + 4 * residual_swing [deg] subject to settle_time < horizon",
+    "optimum_on_grid_boundary": true,
+    "peak_swing": 7.2995013306833005,
+    "residual_swing": 0.05109785918213187
+  },
+  "ZVD": {
+    "param_a": "kp",
+    "a": 2000.0,
+    "param_b": "kd",
+    "b": 40000.0,
+    "score": 2.9173988047261608,
+    "feasible": true,
+    "evaluations": 48,
+    "objective": "minimise peak_swing + 4 * residual_swing [deg] subject to settle_time < horizon",
+    "optimum_on_grid_boundary": false,
+    "peak_swing": 2.8816216852199092,
+    "residual_swing": 0.008944279876562879
+  },
+  "SMC": {
+    "param_a": "c",
+    "a": 0.1,
+    "param_b": "k",
+    "b": 1000.0,
+    "score": 31.662363287622455,
+    "feasible": true,
+    "evaluations": 48,
+    "objective": "minimise peak_swing + 4 * residual_swing [deg] subject to settle_time < horizon",
+    "optimum_on_grid_boundary": true,
+    "peak_swing": 11.129962317201358,
+    "residual_swing": 5.133100242605274
+  },
+  "HSMC": {
+    "param_a": "lam",
+    "a": 0.05,
+    "param_b": "c_swing",
+    "b": 0.3,
+    "score": 31.831630162262634,
+    "feasible": true,
+    "evaluations": 48,
+    "objective": "minimise peak_swing + 4 * residual_swing [deg] subject to settle_time < horizon",
+    "optimum_on_grid_boundary": true,
+    "peak_swing": 11.23489956550751,
+    "residual_swing": 5.1491826491887815,
+    "inherited": {
+      "c": 0.1,
+      "k": 1000.0
+    }
+  }
+}

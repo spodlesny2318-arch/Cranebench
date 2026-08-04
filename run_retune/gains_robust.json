@@ -1,0 +1,17 @@
+{
+  "PD": {
+    "param_a": "kp",
+    "a": 250.0,
+    "param_b": "kd",
+    "b": 3000.0,
+    "score": 10.53847513494593,
+    "feasible": false,
+    "evaluations": 48,
+    "objective": "minimise mean(peak_swing + 4 * residual_swing) [deg] over an 8-sample held-out uncertainty design, subject to the median settling time being inside the horizon and all samples finite",
+    "optimum_on_grid_boundary": true,
+    "tune_samples": 8,
+    "tune_seed": 90210,
+    "peak_swing": 6.926733222356001,
+    "residual_swing": 0.9029354781474825
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "PD": {
+    "param_a": "kp",
+    "a": 250.0,
+    "param_b": "kd",
+    "b": 3000.0,
+    "score": 6.18938447614303,
+    "evaluations": 48,
+    "objective": "peak_swing + 4 * residual_swing",
+    "optimum_on_grid_boundary": true,
+    "peak_swing": 6.133606630367977,
+    "residual_swing": 0.013944461443763432
+  }
+}

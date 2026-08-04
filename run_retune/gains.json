@@ -1,0 +1,56 @@
+{
+  "PD": {
+    "param_a": "kp",
+    "a": 2000.0,
+    "param_b": "kd",
+    "b": 12000.0,
+    "score": 12.666852727642468,
+    "evaluations": 24,
+    "peak_swing": 9.534213948147737,
+    "residual_swing": 0.7831596948736824
+  },
+  "LQR": {
+    "param_a": "q_swing",
+    "a": 100000.0,
+    "param_b": "r",
+    "b": 2e-08,
+    "score": 7.501123843979475,
+    "evaluations": 24,
+    "peak_swing": 7.2926039415591655,
+    "residual_swing": 0.052129975605077546
+  },
+  "ZVD": {
+    "param_a": "kp",
+    "a": 2000.0,
+    "param_b": "kd",
+    "b": 40000.0,
+    "score": 2.9173988047261608,
+    "evaluations": 24,
+    "peak_swing": 2.8816216852199092,
+    "residual_swing": 0.008944279876562879
+  },
+  "SMC": {
+    "param_a": "c",
+    "a": 0.4,
+    "param_b": "k",
+    "b": 8000.0,
+    "score": 38.859972922304536,
+    "evaluations": 24,
+    "peak_swing": 12.06829777876052,
+    "residual_swing": 6.697918785886005
+  },
+  "HSMC": {
+    "param_a": "lam",
+    "a": 0.1,
+    "param_b": "c_swing",
+    "b": 0.5,
+    "score": 39.70593167292118,
+    "evaluations": 24,
+    "peak_swing": 12.356678527361357,
+    "residual_swing": 6.837313286389955,
+    "inherited": {
+      "c": 0.4,
+      "k": 8000.0
+    }
+  }
+}

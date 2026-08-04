@@ -1,0 +1,144 @@
+
+===== campaign 'calm', n = 500 =====
+ctrl           ise_pos      peak_swing  residual_swing     settle_time          effort         chatter        bound_ok
+----------------------------------------------------------------------------------------------------------------------
+PD              0.4782           2.652          0.2232           29.78       3.821e+07       1.259e+04               1
+LQR             0.1101           2.556         0.09805            28.6       3.640e+07       1.116e+04               1
+ZVD              311.8            1.46         0.00294           30.88       2.101e+07            5399               1
+SMC           0.002126           2.813          0.6177           1.361       4.272e+07       1.676e+04               1
+HSMC         0.0009104           2.804          0.6271               0       4.191e+07       1.678e+04               1
+      
+
+paired contrasts against PD
+ctrl  metric               mean diff                      95% CI  wilcoxon p    win     d_z
+LQR   residual_swing         -0.1252          [-0.1285, -0.1218]    1.26e-83   1.00   -3.27
+LQR   peak_swing            -0.09543        [-0.09618, -0.09467]    1.26e-83   1.00  -11.13
+LQR   effort              -1.811e+06    [-1.897e+06, -1.727e+06]    1.26e-83   1.00   -1.84
+LQR   chatter                  -1428              [-1474, -1384]    1.26e-83   1.00   -2.76
+ZVD   residual_swing         -0.2203          [-0.2269, -0.2136]    1.26e-83   1.00   -2.92
+ZVD   peak_swing              -1.191            [-1.201, -1.181]    1.26e-83   1.00  -10.44
+ZVD   effort               -1.72e+07    [-1.759e+07, -1.682e+07]    1.26e-83   1.00   -3.90
+ZVD   chatter                  -7189              [-7319, -7061]    1.26e-83   1.00   -4.84
+SMC   residual_swing         +0.3944          [+0.3716, +0.4174]    2.07e-74   0.13    1.49
+SMC   peak_swing             +0.1612          [+0.1598, +0.1626]    1.26e-83   0.00   10.11
+SMC   effort              +4.514e+06    [+4.165e+06, +4.868e+06]    1.05e-81   0.05    1.12
+SMC   chatter                  +4171              [+3896, +4440]    4.36e-74   0.13    1.32
+HSMC  residual_swing         +0.4039           [+0.379, +0.4286]    3.38e-72   0.14    1.40
+HSMC  peak_swing             +0.1519          [+0.1502, +0.1537]    1.26e-83   0.00    7.62
+HSMC  effort              +3.701e+06    [+3.385e+06, +4.021e+06]    5.03e-62   0.22    1.01
+HSMC  chatter                  +4188              [+3872, +4506]    8.26e-69   0.16    1.15
+
+bound satisfaction (peak swing <= 4.8 deg) and convergence
+  PD     500/500   mean stable from n = 362
+  LQR    500/500   mean stable from n = 380
+  ZVD    500/500   mean stable from n = 247
+  SMC    500/500   mean stable from n = 347
+  HSMC   500/500   mean stable from n = 462
+
+===== campaign 'reference', n = 500 =====
+ctrl           ise_pos      peak_swing  residual_swing     settle_time          effort         chatter        bound_ok
+----------------------------------------------------------------------------------------------------------------------
+PD               0.904           3.461           1.038           39.98       5.788e+07       1.513e+04           0.922
+LQR             0.1498           3.221            1.01           38.74       5.405e+07       1.297e+04            0.96
+ZVD              297.9           2.948           1.069              40       4.297e+07        1.15e+04           0.962
+SMC           0.003602           4.119           1.454           12.04       7.342e+07        2.33e+04           0.782
+HSMC          0.002515            4.13           1.494           5.558       7.244e+07       2.333e+04           0.776
+      
+
+paired contrasts against PD
+ctrl  metric               mean diff                      95% CI  wilcoxon p    win     d_z
+LQR   residual_swing        -0.02737        [-0.03575, -0.01893]    1.09e-08   0.58   -0.28
+LQR   peak_swing             -0.2404          [-0.2545, -0.2268]    1.07e-80   0.95   -1.52
+LQR   effort              -3.832e+06    [-4.118e+06, -3.567e+06]    1.26e-83   1.00   -1.20
+LQR   chatter                  -2165              [-2302, -2036]    1.34e-83   0.99   -1.42
+ZVD   residual_swing        +0.03148         [+0.0239, +0.03948]    8.74e-11   0.43    0.36
+ZVD   peak_swing             -0.5132          [-0.5496, -0.4754]    1.83e-67   0.88   -1.23
+ZVD   effort              -1.491e+07    [-1.549e+07, -1.433e+07]    1.89e-83   0.99   -2.20
+ZVD   chatter                  -3632              [-3867, -3397]    3.12e-73   0.89   -1.35
+SMC   residual_swing         +0.4166          [+0.3803, +0.4534]    1.44e-69   0.11    1.00
+SMC   peak_swing             +0.6574          [+0.6261, +0.6895]    1.34e-83   0.00    1.82
+SMC   effort              +1.554e+07    [+1.399e+07, +1.721e+07]    2.88e-83   0.02    0.84
+SMC   chatter                  +8163              [+7657, +8681]    2.97e-83   0.02    1.40
+HSMC  residual_swing         +0.4565           [+0.4171, +0.496]    1.84e-69   0.11    1.01
+HSMC  peak_swing             +0.6689          [+0.6354, +0.7035]    1.75e-83   0.01    1.72
+HSMC  effort              +1.456e+07    [+1.303e+07, +1.622e+07]    2.21e-80   0.08    0.79
+HSMC  chatter                  +8197              [+7654, +8737]    3.97e-82   0.04    1.31
+
+bound satisfaction (peak swing <= 4.8 deg) and convergence
+  PD     461/500   mean stable from n = 388
+  LQR    480/500   mean stable from n = 388
+  ZVD    481/500   mean stable from n = 376
+  SMC    391/500   mean stable from n = 385
+  HSMC   388/500   mean stable from n = 425
+
+===== campaign 'stress', n = 500 =====
+ctrl           ise_pos      peak_swing  residual_swing     settle_time          effort         chatter        bound_ok
+----------------------------------------------------------------------------------------------------------------------
+PD                2.04            11.9           2.875           29.93       4.246e+08       8.575e+04               0
+LQR              1.437           11.62           1.535           29.69       3.136e+08       6.848e+04               0
+ZVD              415.7           4.448           1.103              30       6.343e+07       2.198e+04           0.696
+SMC             0.1277            15.4           8.329           29.84       1.074e+09       1.450e+05               0
+HSMC           0.07281           16.52             9.2           29.89       1.206e+09       1.547e+05               0
+      
+
+paired contrasts against PD
+ctrl  metric               mean diff                      95% CI  wilcoxon p    win     d_z
+LQR   residual_swing           -1.34            [-1.391, -1.289]    1.26e-83   1.00   -2.28
+LQR   peak_swing             -0.2772          [-0.3488, -0.2043]    3.36e-08   0.53   -0.33
+LQR   effort               -1.11e+08    [-1.177e+08, -1.044e+08]    1.26e-83   1.00   -1.44
+LQR   chatter             -1.728e+04    [-1.828e+04, -1.627e+04]    1.56e-83   0.99   -1.50
+ZVD   residual_swing          -1.772            [-1.826, -1.719]    1.26e-83   1.00   -2.85
+ZVD   peak_swing              -7.451             [-7.68, -7.226]    1.26e-83   1.00   -2.84
+ZVD   effort              -3.612e+08    [-3.724e+08, -3.501e+08]    1.26e-83   1.00   -2.77
+ZVD   chatter             -6.378e+04    [-6.538e+04, -6.218e+04]    1.26e-83   1.00   -3.45
+SMC   residual_swing          +5.454            [+5.283, +5.622]    1.26e-83   0.00    2.79
+SMC   peak_swing              +3.499             [+3.37, +3.627]    1.26e-83   0.00    2.36
+SMC   effort              +6.495e+08    [+6.155e+08, +6.842e+08]    1.26e-83   0.00    1.63
+SMC   chatter             +5.924e+04    [+5.723e+04, +6.126e+04]    1.26e-83   0.00    2.55
+HSMC  residual_swing          +6.325            [+6.144, +6.507]    1.26e-83   0.00    3.01
+HSMC  peak_swing               +4.62            [+4.459, +4.781]    1.26e-83   0.00    2.48
+HSMC  effort              +7.817e+08    [+7.439e+08, +8.199e+08]    1.26e-83   0.00    1.77
+HSMC  chatter             +6.894e+04    [+6.691e+04, +7.098e+04]    1.26e-83   0.00    2.94
+
+bound satisfaction (peak swing <= 4.8 deg) and convergence
+  PD       0/500   mean stable from n = 167
+  LQR      0/500   mean stable from n = 187
+  ZVD    348/500   mean stable from n = 432
+  SMC      0/500   mean stable from n = 338
+  HSMC     0/500   mean stable from n = 216
+
+===== campaign 'dryden', n = 500 =====
+ctrl           ise_pos      peak_swing  residual_swing     settle_time          effort         chatter        bound_ok
+----------------------------------------------------------------------------------------------------------------------
+PD              0.9103           3.358          0.9998           39.94       5.591e+07       1.352e+04           0.962
+LQR             0.1428           3.116           1.002           38.48       5.304e+07       1.156e+04           0.988
+ZVD              297.9            2.76           1.039           39.97       4.070e+07            9146           0.982
+SMC           0.003346           3.967           1.294           10.97       6.673e+07        2.05e+04           0.838
+HSMC          0.002132           3.979           1.338           2.899       6.569e+07        2.04e+04           0.838
+      
+
+paired contrasts against PD
+ctrl  metric               mean diff                      95% CI  wilcoxon p    win     d_z
+LQR   residual_swing        +0.00177      [-0.003511, +0.007046]    7.10e-01   0.55    0.03
+LQR   peak_swing              -0.242          [-0.2515, -0.2325]    2.24e-83   0.99   -2.23
+LQR   effort              -2.869e+06    [-3.029e+06, -2.713e+06]    1.26e-83   1.00   -1.57
+LQR   chatter                  -1963              [-2065, -1864]    1.27e-83   1.00   -1.71
+ZVD   residual_swing        +0.03943        [+0.03245, +0.04659]    9.25e-20   0.35    0.49
+ZVD   peak_swing             -0.5989          [-0.6238, -0.5745]    1.11e-81   0.97   -2.12
+ZVD   effort              -1.522e+07    [-1.568e+07, -1.478e+07]    1.26e-83   1.00   -2.92
+ZVD   chatter                  -4372              [-4567, -4181]    4.44e-82   0.96   -1.96
+SMC   residual_swing         +0.2944          [+0.2675, +0.3219]    1.86e-60   0.16    0.94
+SMC   peak_swing             +0.6081          [+0.5889, +0.6274]    1.26e-83   0.00    2.79
+SMC   effort              +1.082e+07    [+9.959e+06, +1.173e+07]    5.24e-83   0.03    1.05
+SMC   chatter                  +6980              [+6595, +7373]    7.87e-83   0.03    1.56
+HSMC  residual_swing         +0.3383          [+0.3088, +0.3682]    1.54e-62   0.16    0.99
+HSMC  peak_swing             +0.6207          [+0.5999, +0.6418]    1.26e-83   0.00    2.59
+HSMC  effort               +9.78e+06    [+8.949e+06, +1.066e+07]    4.04e-79   0.09    0.98
+HSMC  chatter                  +6881              [+6467, +7297]    1.90e-80   0.06    1.43
+
+bound satisfaction (peak swing <= 4.8 deg) and convergence
+  PD     481/500   mean stable from n = 446
+  LQR    494/500   mean stable from n = 446
+  ZVD    491/500   mean stable from n = 446
+  SMC    419/500   mean stable from n = 273
+  HSMC   419/500   mean stable from n = 298

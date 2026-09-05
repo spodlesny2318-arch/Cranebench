@@ -20,7 +20,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PAPER = ROOT / "PAPER_SoftwareX_draft.md"
-BIB = ROOT / "references.bib"
+BIB = ROOT / "docs" / "references.bib"
 CFF = ROOT / "CITATION.cff"
 README = ROOT / "README.md"
 
@@ -55,6 +55,7 @@ def main():
     a = ap.parse_args()
 
     url = a.url or repo_url()
+    code_url = f"{url}/tree/v0.1.0" if url else None
     if a.check:
         report(url, a.doi)
         return 0
@@ -68,8 +69,8 @@ def main():
                 rf"\g<1>{url} \g<2>", s)
     if a.doi:
         s2 = re.sub(r"^\[34\] .*$",
-                    f"[34] O. Sheremet, S. Podliesnyi, cranebench: a reproducible benchmark "
-                    f"for underactuated crane control, version 1.0.0 [software], Zenodo, 2026. "
+                    f"[34] S. Podliesnyi, O. Sheremet, B. Vorobiov, cranebench: a reproducible benchmarking framework "
+                    f"for underactuated crane control, version 0.1.0 [software], Zenodo, 2026. "
                     f"doi:{a.doi}.", s2, flags=re.M)
     if s2 != s:
         PAPER.write_text(s2, encoding="utf-8"); n += 1
@@ -77,7 +78,7 @@ def main():
     t = CFF.read_text(encoding="utf-8")
     t2 = re.sub(r'repository-code: ".*"', f'repository-code: "{url}"', t)
     if a.doi and "doi:" not in t2:
-        t2 = t2.replace("version: 1.0.0", f"doi: {a.doi}\nversion: 1.0.0")
+        t2 = t2.replace("version: 0.1.0", f"doi: {a.doi}\nversion: 0.1.0")
     if t2 != t:
         CFF.write_text(t2, encoding="utf-8"); n += 1
 

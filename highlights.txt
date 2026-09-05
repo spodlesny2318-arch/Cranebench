@@ -1,5 +1,5 @@
-A shared, verified bench for underactuated crane control; no novel controller
-Plants cross-validated to 6e-10 and energy-conserving to 1e-13, not asserted
-Paired Latin-hypercube design, hash-frozen metrics, full provenance ledger
-Batched integrator matches the reference path to 1e-14 at seventy times speed
-Baseline ranking is not preserved across four 500-sample campaigns
+• A benchmark framework that fixes the crane, disturbance, uncertainty and scoring pipeline.
+• Three cross-validated underactuated crane plants and reproducible stochastic disturbances.
+• Paired uncertainty realisations, frozen metrics, statistical contrasts and provenance ledgers.
+• Five classical baselines are supplied; no novel controller is embedded in the benchmark.
+• A single controller interface enables reproducible comparisons across plants and operating conditions.

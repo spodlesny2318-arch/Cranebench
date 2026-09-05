@@ -1,29 +1,37 @@
 cff-version: 1.2.0
-title: "cranebench: a reproducible benchmark for the control of underactuated crane systems"
+title: "cranebench: a reproducible benchmarking framework for underactuated crane control"
 message: "If you use this software, please cite both the software and the accompanying article."
 type: software
 authors:
+  - family-names: Podliesnyi
+    given-names: Serhii
+    affiliation: "Donbas State Engineering Academy"
+    email: Serhii.Podliesnyi@ddma.edu.ua
+    orcid: "https://orcid.org/0000-0001-8271-4004"
   - family-names: Sheremet
     given-names: Oleksii
     affiliation: "Donbas State Engineering Academy"
     email: Oleksii.Sheremet@ddma.edu.ua
-  - family-names: Podliesnyi
-    given-names: Serhii
+    orcid: "https://orcid.org/0000-0003-1298-3617"
+  - family-names: Vorobiov
+    given-names: Bohdan
     affiliation: "Donbas State Engineering Academy"
-doi: 10.5281/zenodo.21785505
-version: 1.0.0
-date-released: 2026-08-03
+    email: "bohdan.vorobiov@ddma.edu.ua"
+    orcid: "https://orcid.org/0000-0002-0264-354X"
+version: 0.1.0
+date-released: 2026-09-05
 license: BSD-3-Clause
 repository-code: "https://github.com/spodlesny2318-arch/Cranebench"
 abstract: >-
-  A reproducible benchmark for underactuated crane control. Fixes the plants,
-  the disturbance models, the paired uncertainty design, the metric module and
-  the provenance ledger, and supplies five classical baselines and no novel
-  controller, so that a new controller can be evaluated against a bench its
-  author did not build.
+  A reproducible benchmarking framework for underactuated crane control. It
+  fixes the plants, disturbance models, paired uncertainty design, metric
+  module and provenance ledger, and supplies five classical baselines and no
+  novel controller, so that a new controller can be evaluated against a bench
+  independent of its own implementation.
 keywords:
   - crane control
   - underactuated systems
+  - benchmarking
   - reproducibility
-  - benchmark
   - Monte Carlo
+  - paired experimental design

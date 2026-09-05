@@ -1,7 +1,5 @@
 # cranebench
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21785504.svg)](https://doi.org/10.5281/zenodo.21785504)
-
 
 A reproducible benchmark for the control of underactuated crane systems.
 
@@ -19,16 +17,16 @@ metric module, the provenance ledger and five classical baselines.
 
 ```bash
 pip install -e .
-pytest -q            # 25 tests, ~1.5 min
+pytest -q            # 26 tests, about 30 s on the campaign verification environment
 ```
 
 Authors verifying the accompanying article should follow
 [`VERIFY.md`](VERIFY.md), which regenerates every campaign and checks the
 manuscript tables against the data mechanically.
 
-Requires Python >= 3.10, numpy, scipy.
+Requires Python >= 3.10, NumPy >= 1.24 and SciPy >= 1.10.
 
-## Thirty-second example
+## Minimal working example
 
 ```python
 from cranebench.reference import Manoeuvre
@@ -74,7 +72,7 @@ two independent clouds.
 | Disturbances | Kaimal spectral synthesis (exact realised variance); Dryden shaping filter (exact ZOH statistics, unbounded support) |
 | Baselines | PD, LQR, ZVD input shaper, boundary-layer SMC, hierarchical SMC |
 | Design | centred Latin hypercube over five multiplicative factors, paired across controllers |
-| Metrics | ISE, settling time, peak/RMS/residual swing, peak/RMS yaw, effort, peak input, command chatter, bound satisfaction |
+| Metrics | ISE, settling time, peak/RMS/residual swing, peak/RMS yaw, effort, peak input, command total variation (CTV), bound satisfaction |
 | Statistics | paired bootstrap CI, Wilcoxon signed-rank, running-mean convergence |
 | Provenance | ledger with source hashes, metric hash, every seed, solver and environment |
 | Execution | scalar reference path (all plants) and a batched path for the planar plant that integrates the whole ensemble at once, 70x faster and verified equal to 1.4e-14 |
@@ -127,7 +125,7 @@ python examples/summarise_batch.py          # tables
 python examples/make_figures.py             # figures
 ```
 
-Four campaigns, 10 000 closed-loop runs, about three minutes on one core.
+Six illustrative campaigns across three plants comprise 11,250 closed-loop controller runs. The full reproducibility procedure is documented in `VERIFY.md`.
 
 ## Licence
 

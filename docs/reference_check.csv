@@ -34,4 +34,4 @@
 33,verified,10.1214/aos/1176344552,,"B. Efron, Bootstrap methods: another look at the jackknife, Ann. Stat. 7 (1) (1979) 1-26. doi:10.1214/aos/1176344552."
 34,verified,10.2307/3001968,,"F. Wilcoxon, Individual comparisons by ranking methods, Biom. Bull. 1 (6) (1945) 80-3. doi:10.2307/3001968."
 35,"NO DOI, needs your check",,,"American Society of Civil Engineers, ASCE/SEI 7, Minimum Design Loads and Associated Criteria for Buildings and Other Structures; torsional wind load case (Case 2), which pairs 75 % of the design wind load with an eccentricity of 15 % of the width."
-36,pending Zenodo,,,"O. Sheremet, S. Podliesnyi, cranebench: a reproducible benchmark for underactuated crane control, version 1.0.0 [software], archived at Zenodo, 2026. doi:*(to be inserted on release)*."
+36,pending Zenodo,,,"S. Podliesnyi, O. Sheremet, B. Vorobiov, cranebench: a reproducible benchmarking framework for underactuated crane control, version 0.1.0 [software], archived at Zenodo, 2026. doi:*(to be inserted on release)*."

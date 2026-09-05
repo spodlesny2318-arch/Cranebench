@@ -43,16 +43,16 @@ to three significant figures. This is exactly the sort of metric that makes two
 very different controllers look identical, and it is why the plant declares
 `horizontal_inputs`.
 
-`chatter` (the total variation of the command) is reported separately from
+`chatter` (internal key for command total variation, CTV) is reported separately from
 effort because a boundary-layer sliding controller can buy a small tracking
 error with a command that no drive will accept, and effort will not reveal it.
-Command roughness is also a documented route to exciting modes the controller
+Command total variation is also a documented route to exciting modes the controller
 does not model, so it is worth a metric of its own.
 
 ## 5. Boundary layer instead of sign
 
 Ideal sliding control switches at the sampling rate, so its measured effort and
-chatter are functions of the integrator step rather than of the design. Every
+CTV are functions of the integrator step rather than of the design. Every
 sliding baseline here uses `tanh(s/phi)` with `phi` reported. A user who wants
 ideal switching can set `phi` small and will then see the step dependence
 directly, which is the honest outcome.

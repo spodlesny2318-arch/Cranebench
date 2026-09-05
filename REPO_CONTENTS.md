@@ -1,26 +1,106 @@
-# What belongs in the public repository
+# Release contents — cranebench 0.1.0
 
-Committed, because a reader must be able to reproduce every number:
+The manuscript source and SoftwareX template are retained because the included verification/build tooling depends on them. The submission DOCX is distributed separately.
 
-    cranebench/          the package
-    tests/               25 tests
-    tools/               symbolic derivation, tuning, manuscript checker
-    examples/            campaign runners and summarisers
-    docs/                DESIGN.md, figures, reference_check.xlsx
-    run_batch/*_metrics.npz, run_batch/*_ledger.json
-    run_sp3/spatial_paired.npz, run_dual6/dual_paired.npz
-    run_retune/gains_*.json
-    README.md  VERIFY.md  RUN_ON_WINDOWS.md  LICENSE.txt  CITATION.cff
-    pyproject.toml  references.bib
-    PAPER_SoftwareX_draft.md   (the manuscript, so the checker has a target)
-
-Not committed (see .gitignore), because it is intermediate and regenerated:
-
-    *_runs.jsonl         per-run checkpoints
-    run_batch/*_PD.npz   per-controller campaign slices
-    tuning_evals*.json   every evaluated tuning point
-    .venv/ __pycache__/ node_modules/ submission/
-
-The last one is a judgement call: the tuning evaluations are the material
-evidence for the declared tuning budget, and a reviewer may reasonably want
-them. They are a few hundred kB; if in doubt, commit them.
+- `.gitattributes`
+- `.gitignore`
+- `.zenodo.json`
+- `CITATION.cff`
+- `LICENSE.txt`
+- `Licence.txt`
+- `PAPER_SoftwareX_draft.md`
+- `README.md`
+- `RELEASE_NOTES_v0.1.0.md`
+- `RUN_ON_WINDOWS.md`
+- `VERIFY.md`
+- `cranebench/__init__.py`
+- `cranebench/batch.py`
+- `cranebench/controllers/__init__.py`
+- `cranebench/controllers/base.py`
+- `cranebench/controllers/classical.py`
+- `cranebench/controllers/sliding.py`
+- `cranebench/integrate.py`
+- `cranebench/ledger.py`
+- `cranebench/metrics.py`
+- `cranebench/plants/__init__.py`
+- `cranebench/plants/_generated.py`
+- `cranebench/plants/base.py`
+- `cranebench/plants/dual.py`
+- `cranebench/plants/planar.py`
+- `cranebench/plants/spatial.py`
+- `cranebench/reference.py`
+- `cranebench/runner.py`
+- `cranebench/stats.py`
+- `cranebench/uncertainty.py`
+- `cranebench/wind/__init__.py`
+- `cranebench/wind/dryden.py`
+- `cranebench/wind/kaimal.py`
+- `docs/DESIGN.md`
+- `docs/RESULTS.txt`
+- `docs/fig0_architecture.png`
+- `docs/fig1_verification.png`
+- `docs/fig2_campaign.png`
+- `docs/fig3_operating_points.png`
+- `docs/reference_check.csv`
+- `docs/reference_check.xlsx`
+- `docs/references.bib`
+- `examples/make_architecture_figure.py`
+- `examples/make_figures.py`
+- `examples/run_ablation.py`
+- `examples/run_batch_campaign.py`
+- `examples/run_dual_campaign.py`
+- `examples/run_reference_campaign.py`
+- `examples/run_retuned_stress.py`
+- `examples/run_slew_sensitivity.py`
+- `examples/run_spatial_campaign.py`
+- `examples/summarise.py`
+- `examples/summarise_batch.py`
+- `examples/summarise_stats.py`
+- `highlights.txt`
+- `pyproject.toml`
+- `run_batch/calm_ledger.json`
+- `run_batch/calm_metrics.npz`
+- `run_batch/dryden_ledger.json`
+- `run_batch/dryden_metrics.npz`
+- `run_batch/reference_ledger.json`
+- `run_batch/reference_metrics.npz`
+- `run_batch/stress_ledger.json`
+- `run_batch/stress_metrics.npz`
+- `run_batch/stress_retuned_ledger.json`
+- `run_batch/stress_retuned_metrics.npz`
+- `run_dual6/dual_diverged.json`
+- `run_dual6/dual_ledger.json`
+- `run_dual6/dual_metrics.npz`
+- `run_dual6/dual_paired.npz`
+- `run_dual6/dual_runs.jsonl`
+- `run_retune/gains.json`
+- `run_retune/gains_arr.json`
+- `run_retune/gains_dual.json`
+- `run_retune/gains_final.json`
+- `run_retune/gains_robust.json`
+- `run_retune/gains_v2.json`
+- `run_retune/gains_v3.json`
+- `run_retune/gains_v3_evals.json`
+- `run_retune/tuning_evals.json`
+- `run_retune/tuning_evals_arr.json`
+- `run_retune/tuning_evals_dual.json`
+- `run_retune/tuning_evals_dual_48.json`
+- `run_retune/tuning_evals_robust.json`
+- `run_sp3/spatial_diverged.json`
+- `run_sp3/spatial_ledger.json`
+- `run_sp3/spatial_metrics.npz`
+- `run_sp3/spatial_paired.npz`
+- `run_sp3/spatial_runs.jsonl`
+- `softwarex-osp-template.docx`
+- `tests/test_batch.py`
+- `tests/test_dynamics.py`
+- `tests/test_harness.py`
+- `tests/test_manuscript.py`
+- `tests/test_symbolic.py`
+- `tests/test_wind.py`
+- `tools/build_from_template.py`
+- `tools/clean_workspace.py`
+- `tools/derive_symbolic.py`
+- `tools/fill_publication_links.py`
+- `tools/retune.py`
+- `tools/verify_manuscript.py`

@@ -111,7 +111,7 @@ def tables_from(md):
         i += 1
 
 
-EXPECTED_CELLS = 65
+EXPECTED_CELLS = 126
 
 
 

@@ -20,7 +20,8 @@ Definitions (all from the standardised outputs of :meth:`Plant.outputs`):
                    The hoist channel is excluded by construction: it carries the
                    static weight, so including it equalises every controller.
 ``peak_input``     max |u| over the horizontal channels [N]
-``chatter``        integral of |du/dt| over the horizontal channels [N]
+``chatter``        internal storage key for command total variation (CTV),
+                  summed |du| over the held horizontal command [N]
 ``final_pos_err``  mean |position error| over the last ``tail`` seconds [m].
                    Settling time is censored whenever the disturbance keeps the
                    payload out of the tolerance band, which under wind is
@@ -30,7 +31,7 @@ Definitions (all from the standardised outputs of :meth:`Plant.outputs`):
                    tuned far from its design frequency does.
 ``bound_ok``       1.0 if ``peak_swing`` never exceeds ``swing_bound``
 
-``chatter`` is reported because a boundary-layer sliding controller can buy a
+CTV is reported because a boundary-layer sliding controller can buy a
 low ``ise_pos`` with a command that no drive will accept; effort alone does not
 reveal that, and command roughness is a documented route to exciting modes that
 the controller does not model.

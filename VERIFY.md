@@ -20,7 +20,7 @@ pip install -e ".[dev]"
 pytest -q
 ```
 
-Expect **24 passed**. The suite checks the models rather than stored outputs:
+Expect **26 passed**. The suite checks the models rather than stored outputs:
 the planar equations against a numerically assembled Lagrangian, the spatial and
 dual equations against independent SymPy derivations, energy conservation with
 damping removed, the disturbance spectra against their targets, step

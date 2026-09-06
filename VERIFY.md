@@ -53,7 +53,7 @@ python tools/verify_manuscript.py
 
 This parses the result tables out of `PAPER_SoftwareX_draft.md`, recomputes
 every cell from the campaign files, and fails on any disagreement beyond 1 %.
-It currently checks **65 cells**. At a 0.2 % tolerance a dozen cells "fail" on
+It currently checks **126 cells**. At a 0.2 % tolerance a dozen cells "fail" on
 rounding to three significant figures, which is the expected behaviour and not
 a defect — 1 % is the meaningful setting.
 
@@ -65,23 +65,9 @@ What this does **not** check, and you must read by eye:
 - Table 1 in Section 3.1, whose entries come from the test suite;
 - every claim of the form "X because Y".
 
-## 4. References — half a day
+## 4. References
 
-Open `docs/reference_check.csv`. It lists all 36 entries with their provenance:
-
-- **26 entries** were taken from the reference lists of the authors' own
-  manuscripts. They were *not* independently re-verified during preparation.
-  These are the ones the declaration commits you to checking.
-- **9 entries** were located by search and confirmed against the publisher
-  record during preparation. Confirm them anyway; it is faster than deciding
-  which to trust.
-- **1 entry** is the software self-citation and is complete once the Zenodo DOI
-  exists.
-
-For each row: resolve the DOI, confirm authors, title, journal, volume, issue,
-year and page range, and tick `checked_by_author`. Two entries were completed
-late from a Crossref record (Huang & Zhu 2021, McKay et al. 1979) and deserve a
-second look.
+The final manuscript reference list should be checked independently against the publisher records before submission. The working reference-audit spreadsheet is a submission-only artifact and is not part of the software release.
 
 ## 5. What is still not verified by anything here
 

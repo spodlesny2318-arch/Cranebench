@@ -49,7 +49,7 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\.venv\Scripts\Activate.ps1
 ```
 
-**Что должно получиться:** `25 passed`. Время — около полутора минут.
+**Что должно получиться:** `26 passed`. Время — около полутора минут.
 
 **Что означает провал.** Тесты проверяют модели, а не сохранённые числа:
 планарные уравнения против собранного численно лагранжиана, пространственные и
@@ -114,7 +114,7 @@ python examples\run_spatial_campaign.py --n 150
 ```
 
 Она не векторизована и идёт дольше остальных. В конце должно быть
-`merged 150 paired samples -> run_sp2\spatial_paired.npz`.
+`merged 150 paired samples -> run_sp3\spatial_paired.npz`.
 
 Если хотите разбить на части, добавьте `--budget 300` (секунды) и запускайте
 команду повторно, пока не появится строка про merge.
@@ -130,7 +130,7 @@ python tools\verify_manuscript.py
 **Ожидаемый результат:**
 
 ```
-cells checked: 65   tolerance: 1.0%
+cells checked: 126   tolerance: 1.0%
 
 every table cell in the manuscript matches the campaign files.
 ```
@@ -182,40 +182,11 @@ python -c "import sys,numpy as np; sys.path.insert(0,'examples'); from scipy imp
 **Утверждение про рыскание** — что оно одинаково у всех пяти регуляторов:
 
 ```powershell
-python -c "import numpy as np; z=np.load('run_sp2/spatial_paired.npz'); Y=np.stack([z[f'{c}__peak_yaw'] for c in ('PD','LQR','ZVD','SMC','HSMC')]); print('max spread:', np.max(Y.max(0)-Y.min(0)), 'mean:', round(float(Y.mean()),3))"
+python -c "import numpy as np; z=np.load('run_sp3/spatial_paired.npz'); Y=np.stack([z[f'{c}__peak_yaw'] for c in ('PD','LQR','ZVD','SMC','HSMC')]); print('max spread:', np.max(Y.max(0)-Y.min(0)), 'mean:', round(float(Y.mean()),3))"
 ```
 
 ---
 
-## Шаг 7. Ссылки — полдня
+## Шаг 7. Проверка ссылок — перед подачей
 
-Откройте `docs\reference_check.csv` в Excel. 36 строк, колонка `provenance`
-говорит происхождение каждой:
-
-- **26 строк с меткой `[pool]`** — взяты из списков литературы ваших рукописей
-  и при подготовке независимо **не перепроверялись**. Именно их декларация
-  обязывает вас проверить.
-- **9 строк с меткой `[verified]`** — подтверждены по записи издателя при
-  подготовке. Проверьте и их: это быстрее, чем решать, каким доверять.
-- **1 строка** — самоцитирование ПО, закроется вместе с Zenodo DOI.
-
-По каждой: откройте `https://doi.org/` + значение колонки `doi`, сверьте
-авторов, название, журнал, том, выпуск, год и диапазон страниц, поставьте
-отметку в `checked_by_author`. Особого внимания заслуживают Huang & Zhu 2021 и
-McKay et al. 1979 — они были достроены по Crossref в последний момент.
-
----
-
-## Что делать, если что-то не сошлось
-
-Не правьте цифру в статье. Сначала выясните, что изменилось:
-
-1. Сравните `metric_hash` в вашем ledger с приложенным. Разные — изменился
-   модуль метрик.
-2. Сравните `design_seed` и `wind_seeds`. Разные — вы прогнали другой план.
-3. Сравните версии NumPy и SciPy. Расхождение в четвёртом знаке при разных
-   версиях BLAS — ожидаемо и как раз является ответом на вопрос о
-   кроссплатформенной воспроизводимости, который в статье пока открыт.
-
-Любое расхождение свыше 1 % при совпадающих хеше и сидах — это дефект, и его
-надо разбирать, а не сглаживать.
+Проверяйте финальный список литературы рукописи непосредственно по DOI и publisher records. Рабочая таблица reference audit не является частью software release.

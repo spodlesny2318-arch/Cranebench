@@ -1,6 +1,6 @@
 {
   "title": "cranebench: a reproducible benchmarking framework for underactuated crane control",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publication_date": "2026-09-05",
   "upload_type": "software",
   "license": "BSD-3-Clause",

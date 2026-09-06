@@ -18,7 +18,7 @@ Design rules (docs/DESIGN.md):
    every comparison is paired.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 from .metrics import METRIC_HASH, Metrics, compute_metrics
 from .uncertainty import UncertaintyDesign, lhs_design

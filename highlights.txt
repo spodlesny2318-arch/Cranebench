@@ -1,5 +1,0 @@
-• A benchmark framework that fixes the crane, disturbance, uncertainty and scoring pipeline.
-• Three cross-validated underactuated crane plants and reproducible stochastic disturbances.
-• Paired uncertainty realisations, frozen metrics, statistical contrasts and provenance ledgers.
-• Five classical baselines are supplied; no novel controller is embedded in the benchmark.
-• A single controller interface enables reproducible comparisons across plants and operating conditions.

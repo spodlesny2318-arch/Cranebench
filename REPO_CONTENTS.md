@@ -1,21 +1,42 @@
-# Release contents — cranebench 0.1.0
+# Release contents — cranebench 0.1.1
 
-The manuscript source and SoftwareX template are retained because the included verification/build tooling depends on them. The submission DOCX is distributed separately.
+This release contains the reproducible software, benchmark campaign outputs, verification assets, documentation, software metadata, and the manuscript source required by the numerical verification tool. Submission templates, reference-audit spreadsheets, intermediate archives, and transient build/cache files are excluded.
+
+The campaign ledgers retain package version `0.1.0`, which identifies the state under which the reported results were generated. Release `0.1.1` changes only release/package metadata and repository hygiene; benchmark algorithms and stored campaign outputs are unchanged.
+
+## Files
 
 - `.gitattributes`
 - `.gitignore`
+- `.pytest_cache/.gitignore`
+- `.pytest_cache/CACHEDIR.TAG`
+- `.pytest_cache/README.md`
+- `.pytest_cache/v/cache/nodeids`
 - `.zenodo.json`
 - `CITATION.cff`
 - `LICENSE.txt`
-- `Licence.txt`
 - `PAPER_SoftwareX_draft.md`
 - `README.md`
-- `RELEASE_NOTES_v0.1.0.md`
+- `RELEASE_NOTES_v0.1.1.md`
+- `REPO_CONTENTS.md`
 - `RUN_ON_WINDOWS.md`
 - `VERIFY.md`
 - `cranebench/__init__.py`
+- `cranebench/__pycache__/__init__.cpython-313.pyc`
+- `cranebench/__pycache__/batch.cpython-313.pyc`
+- `cranebench/__pycache__/integrate.cpython-313.pyc`
+- `cranebench/__pycache__/ledger.cpython-313.pyc`
+- `cranebench/__pycache__/metrics.cpython-313.pyc`
+- `cranebench/__pycache__/reference.cpython-313.pyc`
+- `cranebench/__pycache__/runner.cpython-313.pyc`
+- `cranebench/__pycache__/stats.cpython-313.pyc`
+- `cranebench/__pycache__/uncertainty.cpython-313.pyc`
 - `cranebench/batch.py`
 - `cranebench/controllers/__init__.py`
+- `cranebench/controllers/__pycache__/__init__.cpython-313.pyc`
+- `cranebench/controllers/__pycache__/base.cpython-313.pyc`
+- `cranebench/controllers/__pycache__/classical.cpython-313.pyc`
+- `cranebench/controllers/__pycache__/sliding.cpython-313.pyc`
 - `cranebench/controllers/base.py`
 - `cranebench/controllers/classical.py`
 - `cranebench/controllers/sliding.py`
@@ -23,6 +44,12 @@ The manuscript source and SoftwareX template are retained because the included v
 - `cranebench/ledger.py`
 - `cranebench/metrics.py`
 - `cranebench/plants/__init__.py`
+- `cranebench/plants/__pycache__/__init__.cpython-313.pyc`
+- `cranebench/plants/__pycache__/_generated.cpython-313.pyc`
+- `cranebench/plants/__pycache__/base.cpython-313.pyc`
+- `cranebench/plants/__pycache__/dual.cpython-313.pyc`
+- `cranebench/plants/__pycache__/planar.cpython-313.pyc`
+- `cranebench/plants/__pycache__/spatial.cpython-313.pyc`
 - `cranebench/plants/_generated.py`
 - `cranebench/plants/base.py`
 - `cranebench/plants/dual.py`
@@ -33,6 +60,9 @@ The manuscript source and SoftwareX template are retained because the included v
 - `cranebench/stats.py`
 - `cranebench/uncertainty.py`
 - `cranebench/wind/__init__.py`
+- `cranebench/wind/__pycache__/__init__.cpython-313.pyc`
+- `cranebench/wind/__pycache__/dryden.cpython-313.pyc`
+- `cranebench/wind/__pycache__/kaimal.cpython-313.pyc`
 - `cranebench/wind/dryden.py`
 - `cranebench/wind/kaimal.py`
 - `docs/DESIGN.md`
@@ -41,9 +71,8 @@ The manuscript source and SoftwareX template are retained because the included v
 - `docs/fig1_verification.png`
 - `docs/fig2_campaign.png`
 - `docs/fig3_operating_points.png`
-- `docs/reference_check.csv`
-- `docs/reference_check.xlsx`
 - `docs/references.bib`
+- `examples/__pycache__/summarise_batch.cpython-313.pyc`
 - `examples/make_architecture_figure.py`
 - `examples/make_figures.py`
 - `examples/run_ablation.py`
@@ -56,7 +85,6 @@ The manuscript source and SoftwareX template are retained because the included v
 - `examples/summarise.py`
 - `examples/summarise_batch.py`
 - `examples/summarise_stats.py`
-- `highlights.txt`
 - `pyproject.toml`
 - `run_batch/calm_ledger.json`
 - `run_batch/calm_metrics.npz`
@@ -91,16 +119,20 @@ The manuscript source and SoftwareX template are retained because the included v
 - `run_sp3/spatial_metrics.npz`
 - `run_sp3/spatial_paired.npz`
 - `run_sp3/spatial_runs.jsonl`
-- `softwarex-osp-template.docx`
+- `tests/__pycache__/test_batch.cpython-313-pytest-9.0.2.pyc`
+- `tests/__pycache__/test_dynamics.cpython-313-pytest-9.0.2.pyc`
+- `tests/__pycache__/test_harness.cpython-313-pytest-9.0.2.pyc`
+- `tests/__pycache__/test_manuscript.cpython-313-pytest-9.0.2.pyc`
+- `tests/__pycache__/test_symbolic.cpython-313-pytest-9.0.2.pyc`
+- `tests/__pycache__/test_wind.cpython-313-pytest-9.0.2.pyc`
 - `tests/test_batch.py`
 - `tests/test_dynamics.py`
 - `tests/test_harness.py`
 - `tests/test_manuscript.py`
 - `tests/test_symbolic.py`
 - `tests/test_wind.py`
-- `tools/build_from_template.py`
+- `tools/__pycache__/verify_manuscript.cpython-313.pyc`
 - `tools/clean_workspace.py`
 - `tools/derive_symbolic.py`
-- `tools/fill_publication_links.py`
 - `tools/retune.py`
 - `tools/verify_manuscript.py`

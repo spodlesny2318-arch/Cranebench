@@ -1,0 +1,89 @@
+name: Tests and compatibility
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }} / ${{ matrix.profile }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: '3.10'
+            profile: minimum
+          - os: windows-latest
+            python: '3.10'
+            profile: minimum
+          - os: ubuntu-latest
+            python: '3.14'
+            profile: revision
+          - os: windows-latest
+            python: '3.14'
+            profile: revision
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install package and testing dependencies
+        run: python -m pip install -c ci/${{ matrix.profile }}.txt ".[dev]" pytest-cov
+      - name: Check dependency consistency
+        run: python -m pip check
+      - name: Verify installed distribution outside the source import path
+        run: python -I -c "import cranebench; from importlib.metadata import version; assert cranebench.__version__ == version('cranebench'); print(cranebench.__file__)"
+      - name: Record and check environment
+        run: python tools/ci_environment.py ${{ matrix.profile }} --output test-results/environment.json
+      - name: Require campaign assets used by the manuscript test
+        run: python -c "from pathlib import Path; paths=['run_batch/reference_metrics.npz','run_batch/stress_metrics.npz','run_sp3/spatial_paired.npz','run_dual6/dual_paired.npz']; assert all(Path(p).is_file() for p in paths), 'Campaign assets missing; manuscript verification must not be silently skipped'"
+      - name: Tests and branch coverage
+        run: python -m pytest -q -p no:cacheprovider --junitxml=test-results/pytest.xml --cov=cranebench --cov-branch --cov-report=term-missing --cov-report=xml:test-results/coverage.xml --cov-report=json:test-results/coverage.json
+      - name: Preserve validation reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-${{ matrix.os }}-${{ matrix.profile }}
+          path: test-results/
+          if-no-files-found: warn
+
+  distributions:
+    name: Distributions / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install build tools
+        run: python -m pip install build twine
+      - name: Build source distribution and wheel
+        run: python -m build
+      - name: Validate distribution metadata
+        run: python -m twine check --strict dist/*
+      - name: Install each artifact and run the README example in isolation
+        run: python -c "from pathlib import Path; import subprocess,sys; files=sorted(Path('dist').glob('*')); assert len(files)==2; [subprocess.run([sys.executable,'tools/check_distribution.py',str(p),'--output',str(Path('test-results')/(p.name+'.json'))],check=True) for p in files]"
+      - name: Preserve distributions and installation reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: distributions-${{ matrix.os }}
+          path: |
+            dist/
+            test-results/
+          if-no-files-found: warn

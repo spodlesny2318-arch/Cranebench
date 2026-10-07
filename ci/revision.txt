@@ -1,0 +1,4 @@
+# Pinned revision validation environment, tested with Python 3.14.
+# This is not a claim that all original campaign dependencies were recorded.
+numpy==2.3.3
+scipy==1.18.0

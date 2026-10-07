@@ -15,3 +15,14 @@ package*.json
 pv*/
 submission/
 _pack*/
+
+# Revision build and verification outputs
+.coverage*
+htmlcov/
+test-results/
+build/
+dist/
+*.egg-info/
+
+# Retained aggregate campaign metrics are required by verification.
+!run_batch/*_metrics.npz

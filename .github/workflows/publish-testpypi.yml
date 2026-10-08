@@ -1,0 +1,45 @@
+name: Publish checked development artifacts to TestPyPI
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'testpypi-*'
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/project/cranebench/
+    permissions:
+      actions: read
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: distributions-ubuntu-latest
+          path: checked-artifacts
+          run-id: 37615226829
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify the exact artifacts from the successful run
+        shell: python
+        run: |
+          from pathlib import Path
+          import hashlib
+          expected = {
+              'cranebench-0.1.2.dev0-py3-none-any.whl': '7ab34d851de8e1299aff1efd8a71f698ee076b7fef9880482019b7a3bca18807',
+              'cranebench-0.1.2.dev0.tar.gz': '25796e30726738ebf5f416208d92a37c7d187ba1d615b10c68ce42c072c2e746',
+          }
+          folder = Path('checked-artifacts/dist')
+          assert {p.name for p in folder.iterdir()} == set(expected)
+          for name, digest in expected.items():
+              assert hashlib.sha256((folder / name).read_bytes()).hexdigest() == digest
+      - name: Publish to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          packages-dir: checked-artifacts/dist/

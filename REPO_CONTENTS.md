@@ -1,138 +1,19 @@
-# Release contents — cranebench 0.1.1
+# Release contents — cranebench 0.1.2
 
-This release contains the reproducible software, benchmark campaign outputs, verification assets, documentation, software metadata, and the manuscript source required by the numerical verification tool. Submission templates, reference-audit spreadsheets, intermediate archives, and transient build/cache files are excluded.
+This release combines the benchmark source, retained campaign outputs,
+provenance ledgers, validation tools, documentation, and manuscript source. The
+original campaign ledgers identify development package version `0.1.0`; the
+`0.1.2` revision corrects paired statistical inference and adds validation and
+installation evidence. It does not claim that the historical campaign runs were
+repeated with the release candidate.
 
-The campaign ledgers retain package version `0.1.0`, which identifies the state under which the reported results were generated. Release `0.1.1` changes only release/package metadata and repository hygiene; benchmark algorithms and stored campaign outputs are unchanged.
+The repository contains:
 
-## Files
+- the `cranebench` Python package, tests, and examples;
+- retained campaign outputs, paired records, tuning records, and provenance;
+- manuscript and figure sources used to audit reported results;
+- cross-platform CI profiles and distribution validation tools;
+- package, citation, licence, and Zenodo metadata.
 
-- `.gitattributes`
-- `.gitignore`
-- `.pytest_cache/.gitignore`
-- `.pytest_cache/CACHEDIR.TAG`
-- `.pytest_cache/README.md`
-- `.pytest_cache/v/cache/nodeids`
-- `.zenodo.json`
-- `CITATION.cff`
-- `LICENSE.txt`
-- `PAPER_SoftwareX_draft.md`
-- `README.md`
-- `RELEASE_NOTES_v0.1.1.md`
-- `REPO_CONTENTS.md`
-- `RUN_ON_WINDOWS.md`
-- `VERIFY.md`
-- `cranebench/__init__.py`
-- `cranebench/__pycache__/__init__.cpython-313.pyc`
-- `cranebench/__pycache__/batch.cpython-313.pyc`
-- `cranebench/__pycache__/integrate.cpython-313.pyc`
-- `cranebench/__pycache__/ledger.cpython-313.pyc`
-- `cranebench/__pycache__/metrics.cpython-313.pyc`
-- `cranebench/__pycache__/reference.cpython-313.pyc`
-- `cranebench/__pycache__/runner.cpython-313.pyc`
-- `cranebench/__pycache__/stats.cpython-313.pyc`
-- `cranebench/__pycache__/uncertainty.cpython-313.pyc`
-- `cranebench/batch.py`
-- `cranebench/controllers/__init__.py`
-- `cranebench/controllers/__pycache__/__init__.cpython-313.pyc`
-- `cranebench/controllers/__pycache__/base.cpython-313.pyc`
-- `cranebench/controllers/__pycache__/classical.cpython-313.pyc`
-- `cranebench/controllers/__pycache__/sliding.cpython-313.pyc`
-- `cranebench/controllers/base.py`
-- `cranebench/controllers/classical.py`
-- `cranebench/controllers/sliding.py`
-- `cranebench/integrate.py`
-- `cranebench/ledger.py`
-- `cranebench/metrics.py`
-- `cranebench/plants/__init__.py`
-- `cranebench/plants/__pycache__/__init__.cpython-313.pyc`
-- `cranebench/plants/__pycache__/_generated.cpython-313.pyc`
-- `cranebench/plants/__pycache__/base.cpython-313.pyc`
-- `cranebench/plants/__pycache__/dual.cpython-313.pyc`
-- `cranebench/plants/__pycache__/planar.cpython-313.pyc`
-- `cranebench/plants/__pycache__/spatial.cpython-313.pyc`
-- `cranebench/plants/_generated.py`
-- `cranebench/plants/base.py`
-- `cranebench/plants/dual.py`
-- `cranebench/plants/planar.py`
-- `cranebench/plants/spatial.py`
-- `cranebench/reference.py`
-- `cranebench/runner.py`
-- `cranebench/stats.py`
-- `cranebench/uncertainty.py`
-- `cranebench/wind/__init__.py`
-- `cranebench/wind/__pycache__/__init__.cpython-313.pyc`
-- `cranebench/wind/__pycache__/dryden.cpython-313.pyc`
-- `cranebench/wind/__pycache__/kaimal.cpython-313.pyc`
-- `cranebench/wind/dryden.py`
-- `cranebench/wind/kaimal.py`
-- `docs/DESIGN.md`
-- `docs/RESULTS.txt`
-- `docs/fig0_architecture.png`
-- `docs/fig1_verification.png`
-- `docs/fig2_campaign.png`
-- `docs/fig3_operating_points.png`
-- `docs/references.bib`
-- `examples/__pycache__/summarise_batch.cpython-313.pyc`
-- `examples/make_architecture_figure.py`
-- `examples/make_figures.py`
-- `examples/run_ablation.py`
-- `examples/run_batch_campaign.py`
-- `examples/run_dual_campaign.py`
-- `examples/run_reference_campaign.py`
-- `examples/run_retuned_stress.py`
-- `examples/run_slew_sensitivity.py`
-- `examples/run_spatial_campaign.py`
-- `examples/summarise.py`
-- `examples/summarise_batch.py`
-- `examples/summarise_stats.py`
-- `pyproject.toml`
-- `run_batch/calm_ledger.json`
-- `run_batch/calm_metrics.npz`
-- `run_batch/dryden_ledger.json`
-- `run_batch/dryden_metrics.npz`
-- `run_batch/reference_ledger.json`
-- `run_batch/reference_metrics.npz`
-- `run_batch/stress_ledger.json`
-- `run_batch/stress_metrics.npz`
-- `run_batch/stress_retuned_ledger.json`
-- `run_batch/stress_retuned_metrics.npz`
-- `run_dual6/dual_diverged.json`
-- `run_dual6/dual_ledger.json`
-- `run_dual6/dual_metrics.npz`
-- `run_dual6/dual_paired.npz`
-- `run_dual6/dual_runs.jsonl`
-- `run_retune/gains.json`
-- `run_retune/gains_arr.json`
-- `run_retune/gains_dual.json`
-- `run_retune/gains_final.json`
-- `run_retune/gains_robust.json`
-- `run_retune/gains_v2.json`
-- `run_retune/gains_v3.json`
-- `run_retune/gains_v3_evals.json`
-- `run_retune/tuning_evals.json`
-- `run_retune/tuning_evals_arr.json`
-- `run_retune/tuning_evals_dual.json`
-- `run_retune/tuning_evals_dual_48.json`
-- `run_retune/tuning_evals_robust.json`
-- `run_sp3/spatial_diverged.json`
-- `run_sp3/spatial_ledger.json`
-- `run_sp3/spatial_metrics.npz`
-- `run_sp3/spatial_paired.npz`
-- `run_sp3/spatial_runs.jsonl`
-- `tests/__pycache__/test_batch.cpython-313-pytest-9.0.2.pyc`
-- `tests/__pycache__/test_dynamics.cpython-313-pytest-9.0.2.pyc`
-- `tests/__pycache__/test_harness.cpython-313-pytest-9.0.2.pyc`
-- `tests/__pycache__/test_manuscript.cpython-313-pytest-9.0.2.pyc`
-- `tests/__pycache__/test_symbolic.cpython-313-pytest-9.0.2.pyc`
-- `tests/__pycache__/test_wind.cpython-313-pytest-9.0.2.pyc`
-- `tests/test_batch.py`
-- `tests/test_dynamics.py`
-- `tests/test_harness.py`
-- `tests/test_manuscript.py`
-- `tests/test_symbolic.py`
-- `tests/test_wind.py`
-- `tools/__pycache__/verify_manuscript.cpython-313.pyc`
-- `tools/clean_workspace.py`
-- `tools/derive_symbolic.py`
-- `tools/retune.py`
-- `tools/verify_manuscript.py`
+Submission-only templates, reference-audit workbooks, and transient build or
+cache files are not part of the intended release contents.

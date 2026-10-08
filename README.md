@@ -26,10 +26,9 @@ Installing the library alone does not install those campaign archives.
 
 Requires Python >= 3.10, NumPy >= 1.24 and SciPy >= 1.10.
 
-PyPI distribution is being evaluated through wheel and source-distribution
-validation. The local 0.1.2.dev0 copy is unpublished; installation by package
-name from PyPI is not yet an available documented route. The final source
-release is intended for GitHub and archival on Zenodo.
+The development build `0.1.2.dev0` was uploaded to TestPyPI and the wheel was
+installed from that test index in a clean environment. TestPyPI is separate from
+the production PyPI index. The versioned source distribution is published with the GitHub release, and that same release is archived on Zenodo. A package-name installation route is available from the production PyPI index after publication.
 Compatibility profiles and the GitHub Actions workflow are described in
 [`ci/README.md`](ci/README.md). Reported CI success requires an actual completed
 workflow run; the presence of the workflow file alone is not evidence of it.

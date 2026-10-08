@@ -20,7 +20,7 @@ pip install -e ".[dev]"
 pytest -q
 ```
 
-Expect **26 passed**. The suite checks the models rather than stored outputs:
+Expect **34 passed** in the validated revision. The suite checks the models rather than stored outputs:
 the planar equations against a numerically assembled Lagrangian, the spatial and
 dual equations against independent SymPy derivations, energy conservation with
 damping removed, the disturbance spectra against their targets, step
@@ -79,13 +79,9 @@ Stated so that nobody mistakes a green run for a complete check:
   parameters — payload mass, rope length, frontal area, suspension stiffness,
   centre-of-pressure eccentricity — should be reviewed by one.
 - **No hardware.** Every number in this package is a simulation result.
-- **Cross-platform reproducibility: closed.** The full procedure was run
-  independently on Windows 11 with CPython 3.14, NumPy 2.5 and SciPy 1.18,
-  against the original Linux run on CPython 3.10, NumPy 2.2 and SciPy 1.15. All
-  136 reported table cells agreed to six significant figures, and the fourteen
-  cells that exceed a 0.2 % tolerance are the same fourteen on both platforms,
-  with the same recomputed values — they are the manuscript's rounding to three
-  significant figures, not a numerical difference. That run also found a real
-  defect: the verification tool read the manuscript in the platform locale
-  encoding, which mangles superscripts on Windows and caused it to skip cells
-  silently. Fixed, with a regression test.
+- **CI scope.** GitHub Actions run 37615226829 passed four test environments
+  (Windows and Ubuntu with minimum and revision dependency profiles) and two
+  distribution-installation jobs. Each test environment passed 34 tests.
+  These CI jobs establish test and installation results for their recorded
+  environments; they do not establish that every historical campaign was
+  rerun on each platform or that the simulated plants match physical hardware.

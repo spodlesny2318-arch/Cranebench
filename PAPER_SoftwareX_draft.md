@@ -213,7 +213,7 @@ This research did not receive any specific grant from funding agencies in the pu
 
 ## Data availability
 
-The source code, campaign result files, provenance ledgers and scripts used to regenerate the tables and figures are openly available in the repository given in C2. The current manuscript intentionally does not cite either of the earlier pre-release Zenodo identifiers, because the repository contained inconsistent DOI metadata. An archival DOI should be inserted after the final three-author release has been deposited; until then, the GitHub repository is the authoritative public location for code and results.
+The source code, campaign result files, provenance ledgers and scripts used to regenerate the tables and figures are openly available in the repository given in C2. The current manuscript intentionally does not cite either of the earlier pre-release Zenodo identifiers, because the repository contained inconsistent DOI metadata. An archival DOI should be inserted after the final three-author release has been deposited; until then, the GitHub repository is the authoritative public location for code and results. A development version, 0.1.2.dev0, has been uploaded to TestPyPI; both distributions were uploaded and installation of the wheel was verified in a clean environment. TestPyPI is a separate test index, so this trial does not constitute a production PyPI release. The final software release and archival DOI remain pending.
 
 ## Declaration of generative AI and AI-assisted technologies in the manuscript preparation process
 

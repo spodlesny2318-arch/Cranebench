@@ -39,12 +39,11 @@ python -m pytest -q -p no:cacheprovider --junitxml=test-results/pytest.xml --cov
 
 Use Python 3.14 and replace `minimum` with `revision` for the second profile.
 
-## Distribution decision for this revision
+## Production release path
 
-PyPI publication is under evaluation, with local wheel and source-distribution
-checks preceding any upload. Source distribution is intended through the
-versioned GitHub release and its Zenodo archive. Installing a
-downloaded source release with `python -m pip install .` does not require a
-cranebench entry on PyPI. Dependency packages are still obtained through pip.
-The revision release and its DOI must actually exist before the manuscript
-claims that the corrected version has been published.
+The TestPyPI trial for `0.1.2.dev0` succeeded, including clean-environment
+installation of the wheel. The production release candidate is `0.1.2`; its
+tag-triggered workflow validates the tagged source, builds both distributions,
+and publishes through the protected GitHub `pypi` environment. The final
+versioned GitHub release is intended to trigger the Zenodo archive. Do not
+claim production publication or an archival DOI until those services confirm it.

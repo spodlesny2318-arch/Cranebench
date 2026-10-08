@@ -18,8 +18,7 @@ authors:
     affiliation: "Donbas State Engineering Academy"
     email: "bohdan.vorobiov@ddma.edu.ua"
     orcid: "https://orcid.org/0000-0002-0264-354X"
-version: 0.1.1
-date-released: 2026-09-05
+version: 0.1.2
 license: BSD-3-Clause
 repository-code: "https://github.com/spodlesny2318-arch/Cranebench"
 abstract: >-

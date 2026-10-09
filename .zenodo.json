@@ -1,14 +1,32 @@
 {
   "title": "cranebench: a reproducible benchmarking framework for underactuated crane control",
-  "version": "0.1.1",
-  "publication_date": "2026-09-05",
+  "version": "0.1.2",
   "upload_type": "software",
   "license": "BSD-3-Clause",
   "creators": [
-    {"name": "Podliesnyi, Serhii", "affiliation": "Donbas State Engineering Academy", "orcid": "0000-0001-8271-4004"},
-    {"name": "Sheremet, Oleksii", "affiliation": "Donbas State Engineering Academy", "orcid": "0000-0003-1298-3617"},
-    {"name": "Vorobiov, Bohdan", "affiliation": "Donbas State Engineering Academy", "orcid": "0000-0002-0264-354X"}
+    {
+      "name": "Podliesnyi, Serhii",
+      "affiliation": "Donbas State Engineering Academy",
+      "orcid": "0000-0001-8271-4004"
+    },
+    {
+      "name": "Sheremet, Oleksii",
+      "affiliation": "Donbas State Engineering Academy",
+      "orcid": "0000-0003-1298-3617"
+    },
+    {
+      "name": "Vorobiov, Bohdan",
+      "affiliation": "Donbas State Engineering Academy",
+      "orcid": "0000-0002-0264-354X"
+    }
   ],
-  "keywords": ["crane control", "underactuated systems", "benchmarking", "reproducibility", "Monte Carlo", "anti-sway control"],
+  "keywords": [
+    "crane control",
+    "underactuated systems",
+    "benchmarking",
+    "reproducibility",
+    "Monte Carlo",
+    "anti-sway control"
+  ],
   "description": "Fixes the plants, disturbance models, paired uncertainty design, metric module and provenance ledger for underactuated crane control, and supplies five classical baselines and no novel controller."
 }

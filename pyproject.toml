@@ -1,18 +1,23 @@
 [build-system]
-requires = ["setuptools>=64"]
+requires = ["setuptools>=77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "cranebench"
-version = "0.1.1"
+version = "0.1.2"
 description = "A reproducible benchmark for underactuated crane control"
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "BSD-3-Clause" }
+license = "BSD-3-Clause"
+license-files = ["LICENSE.txt"]
 authors = [{ name = "S. Podliesnyi" }, { name = "O. Sheremet" }, { name = "B. Vorobiov" }]
 keywords = ["crane", "underactuated", "benchmark", "reproducibility",
             "sliding mode control", "Monte Carlo"]
 dependencies = ["numpy>=1.24", "scipy>=1.10"]
+
+[project.urls]
+Repository = "https://github.com/spodlesny2318-arch/Cranebench"
+Issues = "https://github.com/spodlesny2318-arch/Cranebench/issues"
 
 [project.optional-dependencies]
 dev = ["pytest>=7", "matplotlib>=3.6", "sympy>=1.12"]

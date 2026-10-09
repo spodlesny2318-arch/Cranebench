@@ -1,0 +1,3 @@
+# Exact declared minimum runtime dependencies, tested with Python 3.10.
+numpy==1.24.0
+scipy==1.10.0

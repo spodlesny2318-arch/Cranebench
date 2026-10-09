@@ -74,14 +74,24 @@ def rank_biserial(a: np.ndarray, b: np.ndarray) -> float:
 
 
 def mcnemar(a: np.ndarray, b: np.ndarray) -> Dict[str, float]:
-    """Paired test for a binary outcome measured on the same samples."""
-    a = np.asarray(a, float).astype(bool)
-    b = np.asarray(b, float).astype(bool)
+    """Two-sided exact McNemar test on finite paired binary observations.
+
+    The exact binomial statistic is the smaller discordant count. Identical
+    outcomes have no discordant pairs and return p=1, including an empty pair.
+    """
+    a, b = np.asarray(a, float), np.asarray(b, float)
+    if a.ndim != 1 or b.ndim != 1 or a.shape != b.shape:
+        raise ValueError("Expected one-dimensional arrays of equal length")
+    if not (np.isin(a, [0, 1]).all() and np.isin(b, [0, 1]).all()):
+        raise ValueError("Expected finite binary observations (0 or 1)")
+    a, b = a.astype(bool), b.astype(bool)
     n01 = int(np.sum(a & ~b))
     n10 = int(np.sum(~a & b))
-    stat = (abs(n01 - n10) - 1) ** 2 / max(n01 + n10, 1)
+    stat = min(n01, n10)
+    total = n01 + n10
+    p = float(sps.binomtest(n01, total, 0.5).pvalue) if total else 1.0
     return {"a_only": n01, "b_only": n10, "statistic": float(stat),
-            "p": float(sps.chi2.sf(stat, 1))}
+            "p": p}
 
 
 def bound_sensitivity(peak_swing: np.ndarray,

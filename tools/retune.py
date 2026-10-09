@@ -1,16 +1,10 @@
-"""Re-tune every baseline on the stress nominal, under a declared tuning budget.
+"""Plant-specific grid retuning on a separate uncertainty design.
 
-The campaigns of Section 3.2 use gains tuned once on the benign nominal.  That
-protocol favours feedforward over feedback whenever the evaluation point moves,
-so it is a candidate explanation for the rank reversal observed under the
-aggressive transfer.  This script repeats the tuning at the stress nominal so
-that the two can be told apart.
-
-The budget is the point.  Every controller gets a grid over its two principal
-gains with exactly ``NGRID`` evaluations, scored by one frozen objective on one
-deterministic wind-free run.  Equal budget, equal objective, equal operating
-point -- so any remaining difference is the controller, not the attention it
-received.
+The stored planar/spatial constructor defaults have no recovered original
+search trace. This tool documents later retuning, not their provenance.
+Budgets, manoeuvres and wind are defined by SETUPS and the per-plant grids.
+Dual HSMC inherits the selected SMC gains; equal candidate counts therefore
+do not imply equal independent tuning effort or globally optimal baselines.
 """
 
 from __future__ import annotations

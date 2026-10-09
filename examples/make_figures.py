@@ -47,9 +47,10 @@ def fig1_verification():
         ax[1].axhline(s * 4.8, ls="--", lw=0.8, color="k")
     ax[1].set(xlabel="time [s]", ylabel="swing [deg]", ylim=(-5.6, 5.6),
               title="(b) nominal manoeuvre, no wind")
-    ax[1].legend(fontsize=8, ncol=3, frameon=False, loc="lower right")
+    ax[1].legend(fontsize=8, ncol=5, frameon=False,
+                 loc="upper center", bbox_to_anchor=(0.5, -0.22))
     fig.tight_layout()
-    fig.savefig(OUT / "fig1_verification.png", dpi=180)
+    fig.savefig(OUT / "fig1_verification.png", dpi=180, bbox_inches="tight")
 
 
 def fig2_campaign():
@@ -71,6 +72,7 @@ def fig2_campaign():
     ax[1].set(xlabel="command total variation [N]",
               ylabel="residual swing [deg]",
               title="(b) roughness against residual swing")
+    ax[1].margins(x=0.20, y=0.15)
 
     others = [c for c in ORDER if c != "PD"]
     y = np.arange(len(others))
@@ -109,7 +111,7 @@ def fig3_operating_points():
                    "o-", ms=5, color=C[c])
     ax[1].set_xticks(x, label, fontsize=8)
     ax[1].set(ylabel="residual swing [deg]", yscale="log",
-              title="(b) ranking is not preserved")
+              title="(b) residual swing by operating point")
 
     r = data["stress"]
     ax[2].scatter([np.mean(r[c]["ise_pos"]) for c in ORDER],
@@ -117,11 +119,12 @@ def fig3_operating_points():
                   s=45, c=[C[c] for c in ORDER])
     for c in ORDER:
         ax[2].annotate(c, (np.mean(r[c]["ise_pos"]), np.mean(r[c]["peak_swing"])),
-                       textcoords="offset points", xytext=(7, 2), fontsize=8)
+                       textcoords="offset points", xytext=(7, -12) if c == "LQR" else (7, 5), fontsize=8)
     ax[2].axhline(4.8, ls="--", lw=0.8, color="k")
     ax[2].set(xscale="log", xlabel="tracking error ISE [m$^2$s]",
               ylabel="peak swing [deg]",
               title="(c) stress campaign: the ZVD trade")
+    ax[2].margins(x=0.20, y=0.15)
     fig.tight_layout()
     fig.savefig(OUT / "fig3_operating_points.png", dpi=180)
 

@@ -16,15 +16,22 @@ metric module, the provenance ledger and five classical baselines.
 ## Install
 
 ```bash
-pip install -e .
-pytest -q            # 26 tests, about 30 s on the campaign verification environment
+python -m pip install ".[dev]"
+python -m pytest -q
 ```
 
-Authors verifying the accompanying article should follow
-[`VERIFY.md`](VERIFY.md), which regenerates every campaign and checks the
-manuscript tables against the data mechanically.
+These commands apply to the source checkout. The separately supplied article
+reproducibility bundle contains retained campaign data and the revision audit.
+Installing the library alone does not install those campaign archives.
 
 Requires Python >= 3.10, NumPy >= 1.24 and SciPy >= 1.10.
+
+The development build `0.1.2.dev0` was uploaded to TestPyPI and the wheel was
+installed from that test index in a clean environment. TestPyPI is separate from
+the production PyPI index. The versioned source distribution is published with the GitHub release, and that same release is archived on Zenodo. A package-name installation route is available from the production PyPI index after publication.
+Compatibility profiles and the GitHub Actions workflow are described in
+[`ci/README.md`](ci/README.md). Reported CI success requires an actual completed
+workflow run; the presence of the workflow file alone is not evidence of it.
 
 ## Minimal working example
 

@@ -40,7 +40,7 @@ def main():
         ["planar · spatial · dual", "checked against an",
          "independent derivation"], FIXED)
     box(ax, C[0], 0.055, W[0], 0.40, "Disturbance",
-        ["Kaimal · Dryden", "exact variance, on a grid",
+        ["Kaimal · Dryden", "seeded records on a grid",
          "independent of the step"], FIXED)
     box(ax, C[1], 0.300, W[1], 0.40, "Uncertainty design",
         ["centred Latin hypercube", "drawn once and replayed",
@@ -48,11 +48,11 @@ def main():
     box(ax, C[2], 0.300, W[2], 0.40, "Controller",
         ["your code", "reset(plant, manoeuvre)", "__call__(t, x) → u"], USER)
     box(ax, C[3], 0.545, W[3], 0.40, "Metrics",
-        ["frozen module; its source", "hash is written into",
-         "every result file"], FIXED)
+        ["frozen module; its source", "hash is recorded in",
+         "the provenance ledger"], FIXED)
     box(ax, C[3], 0.055, W[3], 0.40, "Ledger",
-        ["every seed, source hash,", "solver setting and",
-         "library version"], FIXED)
+        ["seeds and source hashes,", "solver settings and",
+         "runtime environment"], FIXED)
     box(ax, C[4], 0.300, W[4], 0.40, "Paired contrast",
         ["bootstrap CI · Wilcoxon", "rank-biserial · McNemar"], FIXED)
 
@@ -64,14 +64,14 @@ def main():
     arrow(ax, (C[3] + W[3], 0.700), (C[4], 0.570))
     arrow(ax, (C[3] + W[3], 0.300), (C[4], 0.430))
 
-    # the barrier: the controller's window on the experiment
+    # The public interface exposes the sampled plant object at reset.
     xc = C[2] + W[2] / 2
     ax.add_patch(FancyBboxPatch((C[2] - 0.016, 0.284), W[2] + 0.032, 0.432,
                                 boxstyle="square,pad=0", lw=1.3, ls=(0, (4, 3)),
                                 edgecolor=WARN, facecolor="none"))
-    ax.annotate("sees the state and the reference, and nothing else:\n"
-                "not the sampled parameters, not the wind\n"
-                "record, not the metric module",
+    ax.annotate("full simulated state at each update;\n"
+                "plant and manoeuvre at reset.\n"
+                "No enforced information barrier.",
                 xy=(xc, 0.720), xytext=(xc, 0.985), ha="center", va="top",
                 fontsize=7.8, color=WARN,
                 arrowprops=dict(arrowstyle="-", color=WARN, lw=0.9))
